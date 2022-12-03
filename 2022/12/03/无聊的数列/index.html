@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>勇者阿狗 | Yhs_JokerのBlog</title>
+        <title>无聊的数列 | Yhs_JokerのBlog</title>
         <meta name="author" content="Yhs_Joker">
         <meta name="description" content="There is only one kind of heroism in the world, which is to love life after knowing the truth of life.">
         <meta name="keywords" content="">
@@ -122,14 +122,14 @@
                         
 <div class="article">
     <div>
-        <h1>勇者阿狗 </h1>
+        <h1>无聊的数列 </h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2022/11/17
+            2022/12/3
         </span>
         
         <span class="category">
@@ -149,29 +149,22 @@
             
             <span class="tag">
                 
-                <a href="/tags/图论/" style="color: #00bcd4">
-                    图论
+                <a href="/tags/洛谷/" style="color: #00bcd4">
+                    洛谷
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/最短路/" style="color: #ffa2c4">
-                    最短路
+                <a href="/tags/蓝/" style="color: #ff7d73">
+                    蓝
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/紫/" style="color: #ffa2c4">
-                    紫
-                </a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/bjfuacm/" style="color: #ff7d73">
-                    bjfuacm
+                <a href="/tags/线段树/" style="color: #03a9f4">
+                    线段树
                 </a>
             </span>
             
@@ -179,92 +172,165 @@
         
     </div>
     <div class="content" v-pre>
-        <p>思维题,如果没见过类似题型很难想到这种建图方式</p>
+        <p>一道裸的线段树,需要考虑对区间修改的方式如何进行转化</p>
 <span id="more"></span>
 
-<h2 id="原题戳这里"><a href="#原题戳这里" class="headerlink" title="原题戳这里"></a><a target="_blank" rel="noopener" href="http://www.bjfuacm.com/problem/21-acm-new-L">原题戳这里</a></h2><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>美丽的汪汪世界第k次遭到了邪恶的亮亮大魔王的攻击！！！</p>
-<p>现在阿狗必须打败亮亮大魔王拯救世界，他向你请求帮助。</p>
-<p>你经过研究发现：要打败魔王必须要收集一定量的勇士能量，而打败第k次魔王入侵需要的勇士能量定义为：k的某个正整数倍的每位数字的和，比如第6次魔王入侵需要的勇士能量是3（答案对应的情况是6的二倍 6×2&#x3D;12，每位数字和1+2&#x3D;3）第10次魔王入侵需要的勇士能量是1(对于10，10×1&#x3D;10，每位数字的和为1), 第41次入侵需要的勇士能量为5 。</p>
-<p>现在你要求出需要勇士能量的最小值。</p>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行输入一个t（t&lt;&#x3D;50），接下来t组数据每组数据读入一个k(1≤k≤100000)表示是第k次魔王入侵。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出t行数。每行都包含一个数，代表需要的最小勇士能量值。</p>
-<h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入#1"></a>输入#1</h3><pre><code>2
-41
-79992
+<h2 id="原题戳这里"><a href="#原题戳这里" class="headerlink" title="原题戳这里"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1438">原题戳这里</a></h2><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>维护一个数列a_i,支持两种操作:</p>
+<ul>
+<li><p><code>1 l r K D</code>:给出一个长度等于r-l+1的等差数列,首项为K,公差为D,并将它对应加到[l,r]范围内的每一个数上,即:令a_l&#x3D;a_l+K,a_{l+1}&#x3D;a_{l+1}+K+D…a_r&#x3D;a_r+K+(r-l)*D</p>
+</li>
+<li><p><code>2 p</code>:询问序列的第p个数的值a_p</p>
+</li>
+</ul>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行两个整数数n,m表示数列长度和操作个数</p>
+<p>第二行n个整数,第i个数表示a_i</p>
+<p>接下来的m行,每行先输入一个整数 opt</p>
+<p>若opt&#x3D;1则再输入四个整数l,r,K,D</p>
+<p>若opt&#x3D;2则再输入一个整数p</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>对于每个询问，一行一个整数表示答案</p>
+<h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入 #1"></a>输入 #1</h3><pre><code>5 2
+1 2 3 4 5
+1 2 4 1 2
+2 3
 </code></pre>
-<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出#1"></a>输出#1</h3><pre><code>5
-36
+<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出 #1"></a>输出 #1</h3><pre><code>6
 </code></pre>
+<h2 id="说明-x2F-提示"><a href="#说明-x2F-提示" class="headerlink" title="说明&#x2F;提示"></a>说明&#x2F;提示</h2><h3 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h3><p>对于100%数据,0&lt;&#x3D;n,m&lt;&#x3D;100000,-200&lt;&#x3D;a_i,K,D&lt;&#x3D;200,1&lt;&#x3D;l&lt;&#x3D;r&lt;&#x3D;n,1&lt;&#x3D;p&lt;&#x3D;n</p>
 <hr>
-<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>定义sum(x)为x的每位数字之和<br>找到一个正整数n,使得sum(n*k)最小</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>我们可以知道，每一个数字都可以通过1进行有限个×10和+1这两个操作构造出来，比如,31&#x3D;(1+1+1)*10+1,其中，×10操作不会改变每位数字之和，+1操作会使每位数字之和+1。那么我们就可以通过这种方式来构造出来k的倍数，也就是对k取模为0的数。</p>
-<p>那我们就可以从1开始，对1进行+1和×10的操作，直到找到对k取模为0的数。根据同余性质 </p>
-<ol>
-<li>若a≡b(mod m)，则a±c≡b±c(mod m)</li>
-<li>若a≡b(mod m)，则ac≡bc(mod m)</li>
-</ol>
-<p>我们可以知道，对大于等于k的数n进行×10和+1操作和对n%k进行×10和+1操作等同，那么我们可以构造一个图，图中的i节点为对k取模为i的数。也就是说，图中会有k个节点，分别为0，1，2……k-2，k-1。</p>
-<p>那我们如何建边呢？先明确一点，这是一个有向图，从u到v边的长度为sum(v)-sum(u)，也就是说，从u点到u+1点的边长为1，因为需要给最后一位数+1，就会导致sum(v)&#x3D;sum(u)+1；从u点到u×10点的边长为0，因为sum(u)&#x3D;&#x3D;sum(u×10)。这样，我们将1，2，一直到k-1的所有点建边，然后跑从1到0的最短路即可。从1到0的路径长度含义sum(n×k)-sum(1)，sum(1)&#x3D;&#x3D;1。为什么，因为假设中途经过了p1,p2,p3……pn个点,那么路径长度为sum(p1)-sum(1) + sum(p2)-sum(p1) + … +sum(n*k)-sum(pn),消掉相同项后得出结论。</p>
-<p>思路有了后，代码很简单，就是一个普通的最短路即可。<br>注意：当k&#x3D;&#x3D;1时，由于无法建边，所以直接输出1即可</p>
-<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><pre><code class="cpp">#include&lt;iostream&gt;
-#include&lt;queue&gt;
+<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>维护一个能实现上述操作的序列</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>由于需要维护区间操作信息,所以我们首先想到线段树,因此我们需要思考如何用线段树维护增加等差数列的信息.暴力单点修改每一个点很明显是会超时的,如果用懒标记直接维护每个区间的起始项,公差也很难pushdown下去,因此我们需要转换思路.</p>
+<p>等差数列有个很重要的性质就是差相等,因此如果用差分来做的话就可以将区间增加等差数列转换为区间增加相同的数,很容易用懒标记来维护.因此我们线段树中维护的就应该是原序列的差分序列,增加等差数列的操作就变成了区间每个数增加相同的数,单点查询就变成了查询区间和,这些操作很容易实现.</p>
+<p>举个例子:</p>
+<p>原序列: 0,0,0,0,0,0,0</p>
+<p>原序列的差分序列: 0,0,0,0,0,0,0</p>
+<p>为原序列2到5的位置增加一个等差序列2,3,4,5</p>
+<p>原序列变为: 0,2,3,4,5.0,0</p>
+<p>差分序列变为0,2,1,1,1,-5,0</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="cpp">#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
 #include&lt;cstring&gt;
-#include&lt;utility&gt;
+#define int long long
+#define IOS ios::sync_with_stdio(0);\
+cin.tie(0);\
+cout.tie(0);
+
 using namespace std;
- 
-const int N=1e5+10,M=2e6+10;
- 
-int h[N],e[M],ne[M],w[M],idx,dist[N];
-bool st[N];
-int t,k;
- 
-void add(int a,int b,int c)
+
+const int N=100010;
+
+struct Node
 &#123;
-    e[idx]=b,w[idx]=c,ne[idx]=h[a],h[a]=idx++;
+    int l,r;
+    int sum,add;
+&#125;;
+
+Node tr[N*4];
+int w[N];
+
+void pushup(Node &amp;u,Node &amp;l,Node &amp;r)
+&#123;
+    u.sum=l.sum+r.sum;
 &#125;
- 
-void dijkstra()
+
+void pushup(int u)
 &#123;
-    using pii=pair&lt;int,int&gt;;
-    priority_queue&lt;pii,vector&lt;pii&gt;,greater&lt;pii&gt;&gt; q;
-    dist[1]=1;
-    q.push(make_pair(1,1));
-    while(q.size())
+    pushup(tr[u],tr[u&lt;&lt;1],tr[u&lt;&lt;1|1]);
+&#125;
+
+void build(int u,int l,int r)
+&#123;
+    if(l==r)
+        tr[u]=&#123;l,r,w[r]-w[r-1],0&#125;;
+    else
     &#123;
-        int u=q.top().second;
-        q.pop();
-        if(st[u]) continue;
-        st[u]=true;
-        for(int i=h[u];i!=-1;i=ne[i])
-        &#123;
-            int j=e[i];
-            if(dist[u]+w[i]&lt;dist[j])
-            &#123;
-                dist[j]=dist[u]+w[i];
-                q.push(make_pair(dist[j],j));
-            &#125;
-        &#125;
+        tr[u]=&#123;l,r&#125;;
+        int mid=(l+r)/2;
+        build(u&lt;&lt;1,l,mid);
+        build(u&lt;&lt;1|1,mid+1,r);
+        pushup(u);
     &#125;
 &#125;
- 
-int main()
+
+void pushdown(Node &amp;u,Node &amp;l,Node &amp;r)
 &#123;
-    cin&gt;&gt;t;
-    while(t--)
+    if(u.add)
     &#123;
-        memset(dist,0x3f,sizeof dist);
-        memset(h,-1,sizeof h);
-        memset(st,0,sizeof st);
-        idx=0;
-        cin&gt;&gt;k;
-        if(k==1) dist[0]=1;
-        for(int i=1;i&lt;k;i++)
+        l.add+=u.add;
+        r.add+=u.add;
+        l.sum+=(l.r-l.l+1)*u.add;
+        r.sum+=(r.r-r.l+1)*u.add;
+        u.add=0;
+    &#125;
+&#125;
+
+void pushdown(int u)
+&#123;
+    pushdown(tr[u],tr[u&lt;&lt;1],tr[u&lt;&lt;1|1]);
+&#125;
+
+void modify(int u,int l,int r,int k)
+&#123;
+    if(l&lt;=tr[u].l&amp;&amp;tr[u].r&lt;=r)
+    &#123;
+        tr[u].sum+=(tr[u].r-tr[u].l+1)*k;
+        tr[u].add+=k;
+    &#125;
+    else
+    &#123;
+        pushdown(u);
+        int mid=(tr[u].l+tr[u].r)/2;
+        if(l&lt;=mid) modify(u&lt;&lt;1,l,r,k);
+        if(r&gt;mid) modify(u&lt;&lt;1|1,l,r,k);
+        pushup(u);
+    &#125;
+&#125;
+
+int query(int u,int l,int r)
+&#123;
+    if(l&lt;=tr[u].l&amp;&amp;tr[u].r&lt;=r)
+        return tr[u].sum;
+    else
+    &#123;
+        pushdown(u);
+        int mid=(tr[u].l+tr[u].r)/2;
+        int res=0;
+        if(l&lt;=mid) res+=query(u&lt;&lt;1,l,r);
+        if(r&gt;mid) res+=query(u&lt;&lt;1|1,l,r);
+        return res;
+    &#125;
+&#125;
+
+signed main()
+&#123;
+    IOS
+    int n,m;
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=n;i++)
+        cin&gt;&gt;w[i];
+    
+    build(1,1,n);
+    
+    while(m--)
+    &#123;
+        int op,l,r,k,d,p;
+        cin&gt;&gt;op;
+        if(op==1)
         &#123;
-            add(i,(i+1)%k,1);
-            add(i,(i*10)%k,0);
+            cin&gt;&gt;l&gt;&gt;r&gt;&gt;k&gt;&gt;d;
+
+            modify(1,l,l,k);
+
+            if(l+1&lt;=n)modify(1,l+1,r,d);
+                //注意要防止越界
+
+            if(r+1&lt;=n)modify(1,r+1,r+1,-(k+(r-l)*d));
+                //记得差分序列要在末尾还原之前造成的影响
         &#125;
-        dijkstra();
-        cout&lt;&lt;dist[0]&lt;&lt;endl;
+        else
+        &#123;
+            cin&gt;&gt;p;
+            cout&lt;&lt;query(1,1,p)&lt;&lt;&#39;\n&#39;;
+        &#125;
     &#125;
 &#125;
 </code></pre>
