@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>小楷与小狗 | Yhs_JokerのBlog</title>
+        <title>动物园 | Yhs_JokerのBlog</title>
         <meta name="author" content="Yhs_Joker">
         <meta name="description" content="There is only one kind of heroism in the world, which is to love life after knowing the truth of life.">
         <meta name="keywords" content="">
@@ -122,14 +122,14 @@
                         
 <div class="article">
     <div>
-        <h1>小楷与小狗 </h1>
+        <h1>动物园 </h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2022/11/17
+            2022/12/4
         </span>
         
         <span class="category">
@@ -149,29 +149,29 @@
             
             <span class="tag">
                 
-                <a href="/tags/bjfuacm/" style="color: #00bcd4">
-                    bjfuacm
+                <a href="/tags/洛谷/" style="color: #ff7d73">
+                    洛谷
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/搜索/" style="color: #00bcd4">
-                    搜索
+                <a href="/tags/蓝/" style="color: #00bcd4">
+                    蓝
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/数论/" style="color: #ff7d73">
-                    数论
+                <a href="/tags/字符串/" style="color: #ff7d73">
+                    字符串
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/绿/" style="color: #ffa2c4">
-                    绿
+                <a href="/tags/KMP/" style="color: #ffa2c4">
+                    KMP
                 </a>
             </span>
             
@@ -179,109 +179,88 @@
         
     </div>
     <div class="content" v-pre>
-        <p>思维题,数据范围看着很大,实际上可以转化为很小的范围</p>
+        <p>一道跟KMP有关的好题,写完之后能对next数组的理解进一步加深</p>
 <span id="more"></span>
 
-<h2 id="原题戳这里"><a href="#原题戳这里" class="headerlink" title="原题戳这里"></a><a target="_blank" rel="noopener" href="https://www.bjfuacm.com/problem/21-acm-new-M">原题戳这里</a></h2><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小楷和小狗喜欢玩游戏，有一天小超开发出了一个新游戏，小楷和小狗想要尝试。</p>
-<p>小超的游戏规则是这样的：给出长度为n的一个序列a，由小楷和小狗从中任意选取几个数，当两人取得的数之和相等时或者不能再取数时游戏结束。</p>
-<p>但是小超不喜欢相同的数，他规定每个人取得的数的集合中不能有相同的数出现，并且当一个人取走x后，另一个人也不能再取走x。</p>
-<p>现在小超想知道游戏结束时两个人取的数分别是多少。</p>
-<p>例如：当小超给出序列为“1、2、1、3、5”时，小楷可以取“1、2”，而小狗可以取“3“。若答案存在则保证一定能取到。现在让你输出游戏结束时每个人各自取得的数，如果两人取得的数之和不相等则输出-1.</p>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行输入一个整数n(1≤n≤100000)</p>
-<p>第二行输入n个整数ai(1≤ai≤100000)</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>如果不存在答案输出-1<br>否则先输出第一个人取得的数的数量x，接下来一行输出x个数表示这个人取得的数。</p>
-<p>第三行输出第二个人取得的数的数量y，接下来一行输出y个数表示这个人取得的数。(如果有多个答案请输出任意一种)</p>
-<h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入 #1"></a>输入 #1</h3><pre><code>5
-1 2 1 3 5
+<h2 id="原题戳这里"><a href="#原题戳这里" class="headerlink" title="原题戳这里"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2375">原题戳这里</a></h2><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>近日，园长发现动物园中好吃懒做的动物越来越多了。例如企鹅，只会卖萌向游客要吃的。为了整治动物园的不良风气，让动物们凭自己的真才实学向游客要吃的，园长决定开设算法班，让动物们学习算法。</p>
+<p>某天，园长给动物们讲解 KMP 算法。</p>
+<p>园长：“对于一个字符串S,它的长度为L。我们可以在O(L)的时间内，求出一个名为next的数组。有谁预习了next数组的含义吗？”</p>
+<p>熊猫：“对于字符串S的前i个字符构成的子串，既是它的后缀又是它的前缀的字符串中（它本身除外），最长的长度记作next[i]。”</p>
+<p>园长：“非常好！那你能举个例子吗？”</p>
+<p>熊猫：“例S为abcababc，则next[5]&#x3D;2。因为S的前5个字符为abcab,ab 既是它的后缀又是它的前缀，并且找不到一个更长的字符串满足这个性质。同理，还可得出next[1]&#x3D;next[2]&#x3D;next[3]&#x3D;0，next[4]&#x3D;next[6]&#x3D;1，next[7]&#x3D;2，next[8]&#x3D;3。”</p>
+<p>园长表扬了认真预习的熊猫同学。随后，他详细讲解了如何在O(L)的时间内求出next 数组。</p>
+<p>下课前，园长提出了一个问题：“KMP 算法只能求出next数组。我现在希望求出一个更强大 num数组–对于字符串S的前i个字符构成的子串，既是它的后缀同时又是它的前缀，并且该后缀与该前缀不重叠，将这种字符串的数量记作num[i]。例如S为aaaaa，则num[4]&#x3D;2。这是因为S的前4个字符为aaaa，其中a和aa都满足性质‘既是后缀又是前缀’，同时保证这个后缀与这个前缀不重叠。而aaa虽然满足性质‘既是后缀又是前缀’，但遗憾的是这个后缀与这个前缀重叠了，所以不能计算在内。同理，num[1]&#x3D;0,num[2]&#x3D;num[3]&#x3D;1,num[5]&#x3D;2。”</p>
+<p>最后，园长给出了奖励条件，第一个做对的同学奖励巧克力一盒。听了这句话，睡了一节课的企鹅立刻就醒过来了！但企鹅并不会做这道题，于是向参观动物园的你寻求帮助。你能否帮助企鹅写一个程序求出num数组呢？</p>
+<p>特别地，为了避免大量的输出，你不需要输出num[i]分别是多少，你只需要输出所有(num[i]+1)的乘积，对 10^9 + 7取模的结果即可。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第1行仅包含一个正整数n，表示测试数据的组数。</p>
+<p>随后n行，每行描述一组测试数据。每组测试数据仅含有一个字符串S，S的定义详见题目描述。</p>
+<p>数据保证S中仅含小写字母。输入文件中不会包含多余的空行，行末不会存在多余的空格。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>包含n行，每行描述一组测试数据的答案，答案的顺序应与输入数据的顺序保持一致。</p>
+<p>对于每组测试数据，仅需要输出一个整数，表示这组测试数据的答案对 10^9+7取模的结果。</p>
+<p>输出文件中不应包含多余的空行。</p>
+<h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入 #1"></a>输入 #1</h3><pre><code>3
+aaaaa
+ab
+abcababc
 </code></pre>
-<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出 #1"></a>输出 #1</h3><pre><code>2
-1 2
+<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出 #1"></a>输出 #1</h3><pre><code>36
 1
-3
+32 
 </code></pre>
-<h3 id="输入-2"><a href="#输入-2" class="headerlink" title="输入 #2"></a>输入 #2</h3><pre><code>5
-1 1 1 1 1
-</code></pre>
-<h3 id="输出-2"><a href="#输出-2" class="headerlink" title="输出 #2"></a>输出 #2</h3><pre><code>-1
-</code></pre>
+<h2 id="说明-x2F-提示"><a href="#说明-x2F-提示" class="headerlink" title="说明&#x2F;提示"></a>说明&#x2F;提示</h2><h3 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h3><p>n&lt;&#x3D;5, L&lt;&#x3D;1,000,000</p>
 <hr>
-<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>在一组集合中,找到任意两组非空真子集,使其和相同,如果没有则输出-1.<br>其中,两组非空真子集中不得有相同元素.</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>由于需要不重复的元素,所以可以用set来实现去重功能,然后如果当n的值很小的话,我们可以通过dfs来枚举每一种可能,找出其中一组解.但是此时的n很大,我们可以考虑缩小问题的规模.</p>
-<p>我们可以得出结论我们考虑构造一个序列An&#x3D;{1,2,4,…65536},这是在数据范围内无法找到任何一组解的最大集合,仅含有17个元素,所以,当n&gt;17时,一定存在一组解.因此,当n比较大时,我们可以只对其中任意18个元素跑dfs,一定能找出一组解.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="cpp">#include&lt;iostream&gt;
-#include&lt;set&gt;
-#include&lt;map&gt;
-#include&lt;vector&gt;
- 
+<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>求出num数组,然后输出所有(num[i]+1)的乘积对10^9+7取模的结果</p>
+<p>num[i]:对于字符串S的前i个字符构成的子串s中，定义一个字符串p,p满足即是s的前缀又是s的后缀,且strlen(p)*2&lt;&#x3D;strlen(s),其中满足条件的p的数量</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="cpp">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
 using namespace std;
 using ll=long long;
- 
+const ll N=1000010,P=1000000007;
+
+int t;
+
 int n;
-set&lt;ll&gt; se;//去重
-vector&lt;ll&gt; v;
+char s[N];
+int ne[N];
+int nu[N];
+ll ans;
 
-bool flag=0;    //flag=1就是找到了
- 
-vector&lt;ll&gt; vv;
-map&lt;ll,vector&lt;ll&gt;&gt; mp;  //key:一组集合中元素的和  //value:集合元素
-
-void dfs(int idx,ll sum)
+void solve()
 &#123;
-    if(flag) return;
+    ans=1;
+    ne[0]=ne[1]=0;
+    nu[0]=0,nu[1]=1;
     
-    if(idx==v.size())
+    cin&gt;&gt;s+1;
+    n=strlen(s+1);
+    
+    for(int i=2,j=0;i&lt;=n;i++)
     &#123;
-        if(vv.size())
-        &#123;
-            if(mp.count(sum))       //如果当前集合的元素和与之前其中一组元素和相同,就打印
-            &#123;
-                cout&lt;&lt;mp[sum].size()&lt;&lt;endl;
-                for(auto e:mp[sum])
-                    cout&lt;&lt;e&lt;&lt;&quot; &quot;;
-                cout&lt;&lt;endl;
-                cout&lt;&lt;vv.size()&lt;&lt;endl;
-                for(auto e:vv)
-                    cout&lt;&lt;e&lt;&lt;&quot; &quot;;
-                cout&lt;&lt;endl;
-                flag=1;
-            &#125;
-            else        //否则将当前集合存入map
-            &#123;
-                mp[sum]=vv;
-            &#125;
-        &#125;
-        return;
+        while(j&amp;&amp;s[i]!=s[j+1]) j=ne[j];
+        if(s[i]==s[j+1]) j++;
+        ne[i]=j;
+        nu[i]=nu[j]+1;
     &#125;
     
-    dfs(idx+1,sum);
-    
-    vv.push_back(v[idx]);
-    dfs(idx+1,sum+v[idx]);
-    vv.pop_back();
+    for(int i=2,j=0;i&lt;=n;i++)
+    &#123;
+        while(j&amp;&amp;s[i]!=s[j+1]) j=ne[j];
+        if(s[i]==s[j+1]) j++;
+        while(j*2&gt;i) j=ne[j];
+        ans=ans*(nu[j]+1)%P;
+    &#125;
+    cout&lt;&lt;ans&lt;&lt;&#39;\n&#39;;
 &#125;
- 
+
 int main()
 &#123;
-    ios::sync_with_stdio(false);
+    ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-
-    cin&gt;&gt;n;
-
-    for(int i=0,x;i&lt;n;i++) 
-        cin&gt;&gt;x,se.insert(x);
-
-    for(auto e:se)
-    &#123;
-        v.push_back(e);
-        if(v.size()&gt;17) //当存在18个元素时,一定存在一组解,因此就可以跳出循环了
-            break;
-    &#125;
     
-    dfs(0,0);
-
-    if(!flag)
-        cout&lt;&lt;-1;
+    cin&gt;&gt;t;
+    while(t--)
+        solve();
 &#125;
 </code></pre>
 
