@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>插花艺术笔记（六） | Yhs_JokerのBlog</title>
+        <meta name="author" content="Yhs_Joker">
+        <meta name="description" content="There is only one kind of heroism in the world, which is to love life after knowing the truth of life.">
+        <meta name="keywords" content="">
+        <link rel="icon" href="./head_portrait.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Yhs_JokerのBlog</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Yhs_JokerのBlog</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>插花艺术笔记（六） </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/12/30
+        </span>
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/插花艺术/" style="color: #ffa2c4">
+                    插花艺术
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <p>笔记参考南京林业大学插花艺术视频公开课。</p>
+<span id="more"></span>
+
+<h2 id="第六课：礼仪插花"><a href="#第六课：礼仪插花" class="headerlink" title="第六课：礼仪插花"></a>第六课：礼仪插花</h2><h3 id="（一）礼仪插花的常见种类"><a href="#（一）礼仪插花的常见种类" class="headerlink" title="（一）礼仪插花的常见种类"></a>（一）礼仪插花的常见种类</h3><ul>
+<li>花束<ul>
+<li>单面观花束</li>
+<li>四面观花束</li>
+</ul>
+</li>
+<li>花篮</li>
+<li>胸花</li>
+<li>头花</li>
+<li>腕花</li>
+<li>桌花</li>
+<li>花环</li>
+</ul>
+<h3 id="（二）花意与花语"><a href="#（二）花意与花语" class="headerlink" title="（二）花意与花语"></a>（二）花意与花语</h3><ul>
+<li>梅花：高洁，坚骨傲寒</li>
+<li>唐菖蒲：健康，步步高</li>
+<li>红玫瑰：爱情</li>
+<li>康乃馨：母爱</li>
+<li>非洲菊：兴奋，友爱，欣欣向荣，扶持郎君</li>
+<li>向日葵：光辉，仰慕，健康，稳重，忠诚</li>
+<li>腊梅：冰枝不屈，冻蕊尤香</li>
+<li>石榴：多子多孙</li>
+<li>柳：依依不舍，春讯</li>
+<li>一品红：祝福</li>
+<li>龟背竹：长寿</li>
+<li>富贵竹：富贵</li>
+<li>百合：百年好合，万事如意</li>
+<li>郁金香：爱的表达，高贵，祝福永远，多情</li>
+<li>鹤望兰：热恋中的情侣</li>
+<li>蝴蝶兰：迈向幸福，优雅高贵</li>
+<li>菊花：轻逸傲霜，长寿</li>
+<li>水仙：瑞兆吉祥，多情</li>
+<li>花烛：心心相印，爱心</li>
+<li>紫罗兰：永远的爱</li>
+<li>银柳：春讯</li>
+<li>竹：高风亮节</li>
+<li>松柏：坚毅，刚强，苍劲，长寿</li>
+<li>金橘：招财进宝</li>
+<li>八角金盘：富贵</li>
+<li>松、竹、梅：岁寒三友</li>
+<li>桃、杏、梅：报春争艳</li>
+<li>松、鹤望兰：松鹤延年</li>
+<li>竹或南天竹、梅花、苹果：竹报平安</li>
+<li>石榴、苹果、桃：福、禄、寿</li>
+<li>玉兰、海棠、牡丹：玉堂富贵</li>
+<li>梅、兰、竹、菊：四君子</li>
+</ul>
+<h3 id="（三）四季与花卉"><a href="#（三）四季与花卉" class="headerlink" title="（三）四季与花卉"></a>（三）四季与花卉</h3><ul>
+<li>春<ul>
+<li>百花盛开，群芳争艳，选择色彩鲜艳的花材，给人以轻松，活泼，生机盎然的感受</li>
+</ul>
+</li>
+<li>夏<ul>
+<li>轻逸素淡，明净轻快，选用冷色或绿色的花材，给人清凉的感觉</li>
+</ul>
+</li>
+<li>秋<ul>
+<li>金色的秋季，选用红、黄等明艳的花卉与果实，给人留下丰收兴旺的遐想</li>
+</ul>
+</li>
+<li>冬<ul>
+<li>伴随冰霜，严寒，选用一品红，水仙，腊梅，银柳，南天竹等时令花卉，让人感受到迎风破雪的勃勃生机，给人以万花纷谢，却仍有芳菲可觅之感</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+    
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 20xx - 2022 Yhs_JokerのBlog
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Yhs_Joker
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>

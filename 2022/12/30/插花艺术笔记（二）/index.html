@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>插花艺术笔记（二） | Yhs_JokerのBlog</title>
+        <meta name="author" content="Yhs_Joker">
+        <meta name="description" content="There is only one kind of heroism in the world, which is to love life after knowing the truth of life.">
+        <meta name="keywords" content="">
+        <link rel="icon" href="./head_portrait.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Yhs_JokerのBlog</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Yhs_JokerのBlog</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>插花艺术笔记（二） </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/12/30
+        </span>
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/插花艺术/" style="color: #03a9f4">
+                    插花艺术
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <p>笔记参考南京林业大学插花艺术视频公开课。</p>
+<span id="more"></span>
+
+<h2 id="第二课-插花的器具与材料"><a href="#第二课-插花的器具与材料" class="headerlink" title="第二课: 插花的器具与材料"></a>第二课: 插花的器具与材料</h2><h3 id="（一）插花的器具"><a href="#（一）插花的器具" class="headerlink" title="（一）插花的器具"></a>（一）插花的器具</h3><ul>
+<li>花器及花器的选择</li>
+<li>几架与垫座</li>
+<li>固定花材用具：花插、花泥、铁丝网、花托</li>
+<li>其他工具及附属品</li>
+</ul>
+<h4 id="花器种类"><a href="#花器种类" class="headerlink" title="花器种类"></a>花器种类</h4><ul>
+<li>按形状分：瓶、盘、碗、篮、缸、筒、筐、吊挂花器</li>
+<li>按材料分：<ul>
+<li>陶瓷花器<ul>
+<li>精良的工艺</li>
+<li>丰富的色彩</li>
+<li>品类繁多</li>
+<li>美观实用</li>
+</ul>
+</li>
+<li>玻璃花器<ul>
+<li>颜色鲜艳</li>
+<li>晶莹透亮</li>
+<li>尽量不要选择花纹特别复杂或者颜色过于艳丽的玻璃花器</li>
+</ul>
+</li>
+<li>金属花器<ul>
+<li>庄重肃穆</li>
+<li>敦厚豪华</li>
+<li>反映出不同历史时代的艺术发展</li>
+</ul>
+</li>
+<li>藤竹草编<ul>
+<li>形色简洁</li>
+<li>朴实无华</li>
+</ul>
+</li>
+<li>塑料花器<ul>
+<li>价格便宜，轻便且色彩丰富</li>
+<li>造型多样</li>
+</ul>
+</li>
+<li>素烧陶器<ul>
+<li>朴素典雅</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="花器选择"><a href="#花器选择" class="headerlink" title="花器选择"></a>花器选择</h4><ul>
+<li>符合应用目的和主题的需要</li>
+<li>色彩和款式与花材及环境相协调</li>
+<li>口径大小和器身高矮适宜</li>
+<li>重心平稳，便于陈设</li>
+</ul>
+<h4 id="其他工具及附属品"><a href="#其他工具及附属品" class="headerlink" title="其他工具及附属品"></a>其他工具及附属品</h4><ul>
+<li>修剪工具<ul>
+<li>剪刀，小刀，锯</li>
+</ul>
+</li>
+<li>辅助工具<ul>
+<li>铁丝钳，订书机，喷水器</li>
+</ul>
+</li>
+<li>附属品<ul>
+<li>配件，小摆饰，丝带，包装纸，串珠，吊坠，中国结等</li>
+</ul>
+</li>
+<li>配件<ul>
+<li>作用：点题、与作品相呼应、烘托气氛</li>
+<li>使用要求：数量宜少、比例适当、与作品协调</li>
+</ul>
+</li>
+</ul>
+<h3 id="（二）花材"><a href="#（二）花材" class="headerlink" title="（二）花材"></a>（二）花材</h3><ul>
+<li>花材的分类（根据华彩的形态与用途分）<ul>
+<li>线形花材<ul>
+<li>整个花材呈长条状或线状。利用直线型或曲线型等植物的自然形态，构成造型的轮廓，常是决定插花作品大小比例和高度的材料</li>
+</ul>
+</li>
+<li>团（块）形花材<ul>
+<li>花朵集中成较大的圆形或块状，这类花材花色鲜艳，花姿优美，一般与线状花配合作焦点花</li>
+</ul>
+</li>
+<li>异性花材<ul>
+<li>花形奇特，形体较大，1-2朵足以引起人们的注意，宜在作品的中心或突出位置作焦点花</li>
+</ul>
+</li>
+<li>散（点）形花材<ul>
+<li>由许多简单的小花构成星点状蓬松轻盈的大花序。宜插在大花之间的空隙，起到承托，陪衬的作用，增加层次感</li>
+</ul>
+</li>
+<li>叶材<ul>
+<li>在插花中用于扶持，衬托主要花材的绿色枝叶。主要是填充空间，使鲜花在绿色的背景前或绿色衬底上更醒目，动人，起到对插花作品进行整体修饰的作用</li>
+</ul>
+</li>
+<li>木本枝条<ul>
+<li>在东方传统插花中体现线条美的主要花材</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>主要鲜花材<ul>
+<li>睡莲，花烛，蛇鞭菊，非洲菊，唐菖蒲，百合，马蹄莲，郁金香，晚香玉，香石竹</li>
+</ul>
+</li>
+<li>花材的保鲜<ul>
+<li>花材凋萎的原因<ul>
+<li>失水（主要原因）<ul>
+<li>花材离体，造成水分供应不足</li>
+<li>由于呼吸作用，空气进入导管，阻碍了吸水</li>
+<li>一些含乳汁的花材，切口易被乳汁堵塞，造成吸水不良</li>
+<li>切口细菌感染，腐烂而丧失吸水能力</li>
+</ul>
+</li>
+<li>缺乏营养</li>
+<li>产生乙烯</li>
+<li>水质不良</li>
+</ul>
+</li>
+<li>花材保鲜的方法<ul>
+<li>减少水分损失<ul>
+<li>水中剪切法</li>
+<li>深水养护法</li>
+<li>倒淋法</li>
+<li>注水法</li>
+<li>扩大切口面积法</li>
+</ul>
+</li>
+<li>防止切口感染和促进吸水<ul>
+<li>浸烫法</li>
+<li>灼烧法</li>
+<li>化学处理法</li>
+</ul>
+</li>
+<li>应用切花保鲜剂<ul>
+<li>抗氧化剂：维生素C</li>
+<li>乙烯合成抑制剂：硝酸银</li>
+<li>乙烯清除剂：高锰酸钾</li>
+<li>杀菌剂：硼酸，8-羟基喹啉</li>
+<li>营养剂：蔗糖</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+    
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 20xx - 2022 Yhs_JokerのBlog
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Yhs_Joker
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>
