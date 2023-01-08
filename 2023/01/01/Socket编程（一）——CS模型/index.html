@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>Socket编程（一）——CS模型 | Yhs_JokerのBlog</title>
+        <meta name="author" content="Yhs_Joker">
+        <meta name="description" content="There is only one kind of heroism in the world, which is to love life after knowing the truth of life.">
+        <meta name="keywords" content="">
+        <link rel="icon" href="./head_portrait.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Yhs_JokerのBlog</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Yhs_JokerのBlog</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>Socket编程（一）——CS模型 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2023/1/1
+        </span>
+        
+        <span class="category">
+            <a href="/categories/网络编程/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                网络编程
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/C/" style="color: #00bcd4">
+                    C++
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Socket/" style="color: #00bcd4">
+                    Socket
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Windows/" style="color: #00bcd4">
+                    Windows
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <p>记录下学习socket网络编程的流程，短时期目标是完成一个网络斗地主项目。由于笔者能力有限，所以暂时只总结出相关函数的用法以及成品。由于文档中有部分未翻译或翻译很差，只得以英文形式出现在本文中，以防本人翻译出现问题。</p>
+<p>本文中以TCP为主。持续更新中…</p>
+<span id="more"></span>
+
+<h2 id="常用函数汇总"><a href="#常用函数汇总" class="headerlink" title="常用函数汇总"></a>常用函数汇总</h2><hr>
+<h3 id="WSAStartup"><a href="#WSAStartup" class="headerlink" title="WSAStartup"></a>WSAStartup</h3><h4 id="文档链接"><a href="#文档链接" class="headerlink" title="文档链接"></a>文档链接</h4><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/api/winsock2/nf-winsock2-wsastartup">https://learn.microsoft.com/zh-cn/windows/win32/api/winsock2/nf-winsock2-wsastartup</a></p>
+<h4 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h4><p>winsock2.h</p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>启动网络库，必须是第一个调用的windows socket函数</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><pre><code class="cpp">int WSAAPI WSAStartup(
+WORD      wVersionRequested,
+LPWSADATA lpWSAData
+);
+</code></pre>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><code>wVersionRequested</code></li>
+</ul>
+<p>调用方可以使用的最高版本的 Windows 套接字规范。 高顺序字节指定次要版本号;低顺序字节指定主版本号。</p>
+<ul>
+<li><code>lpWSAData</code></li>
+</ul>
+<p>指向 WSADATA 数据结构的指针，该结构用于接收 Windows 套接字实现的详细信息。</p>
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><p>如果成功， WSAStartup 函数将返回零。 否则，它将返回错误代码。</p>
+<p>WSAStartup 函数直接返回此函数的返回值中的扩展错误代码。 不需要调用 WSAGetLastError 函数。</p>
+<h4 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h4><p>Windows 套接字规范的当前版本为版本 2.2。 </p>
+<p>应用程序必须在每次成功调用 WSAStartup 函数时调用 WSACleanup 函数。 例如，如果应用程序调用 WSAStartup 三次，则必须调用 WSACleanup 三次。 前两次对 WSACleanup 的调用不执行任何操作，只不过递减内部计数器：任务的最终 WSACleanup 调用对任务执行所有必要的资源解除分配。</p>
+<p>应用程序可以调用 WSAGetLastError 函数来确定其他 Windows 套接字函数的扩展错误代码，就像在 Windows 套接字中一样，即使 WSAStartup 函数失败或未调用 WSAStartup 函数在调用 Windows 套接字函数之前正确初始化 Windows 套接字。 WSAGetLastError 函数是 Winsock 2.2 DLL 中唯一可在 WSAStartup 失败的情况下调用的函数之一。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><pre><code class="cpp">#include &lt;WinSock2.h&gt;
+#include &lt;WS2tcpip.h&gt;
+#include &lt;stdio.h&gt;
+
+// Need to link with Ws2_32.lib
+#pragma comment(lib, &quot;ws2_32.lib&quot;)
+
+
+int main()
+&#123;
+
+    WORD wVersionRequested;
+    WSADATA wsaData;
+    int err;
+
+    /* Use the MAKEWORD(lowbyte, highbyte) macro declared in Windef.h */
+    wVersionRequested = MAKEWORD(2, 2);
+
+    err = WSAStartup(wVersionRequested, &amp;wsaData);
+    if (err != 0) &#123;
+        /* Tell the user that we could not find a usable */
+        /* Winsock DLL.                                  */
+        printf(&quot;WSAStartup failed with error: %d\n&quot;, err);
+        return 1;
+    &#125;
+
+    /* Confirm that the WinSock DLL supports 2.2.*/
+    /* Note that if the DLL supports versions greater    */
+    /* than 2.2 in addition to 2.2, it will still return */
+    /* 2.2 in wVersion since that is the version we      */
+    /* requested.                                        */
+
+    if (LOBYTE(wsaData.wVersion) != 2 || HIBYTE(wsaData.wVersion) != 2) &#123;
+        /* Tell the user that we could not find a usable */
+        /* WinSock DLL.                                  */
+        printf(&quot;Could not find a usable version of Winsock.dll\n&quot;);
+        WSACleanup();
+        return 1;
+    &#125;
+    else
+        printf(&quot;The Winsock 2.2 dll was found okay\n&quot;);
+
+
+    /* The Winsock DLL is acceptable. Proceed to use it. */
+
+    /* Add network programming using Winsock here */
+
+    /* then call WSACleanup when done using the Winsock dll */
+
+    WSACleanup();
+
+&#125;
+</code></pre>
+<hr>
+<h3 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h3><h4 id="文档链接-1"><a href="#文档链接-1" class="headerlink" title="文档链接"></a>文档链接</h4><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/api/winsock2/nf-winsock2-socket">https://learn.microsoft.com/zh-cn/windows/win32/api/winsock2/nf-winsock2-socket</a></p>
+<h4 id="头文件-1"><a href="#头文件-1" class="headerlink" title="头文件"></a>头文件</h4><p>winsock2.h</p>
+<h4 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h4><p>创建一个套接字</p>
+<h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><pre><code class="cpp">SOCKET WSAAPI socket(
+  int af,
+  int type,
+  int protocol
+);
+</code></pre>
+<h4 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><code>af</code></li>
+</ul>
+<p>The address family specification. </p>
+<p>The values currently supported are AF_INET or AF_INET6, which are the Internet address family formats for IPv4 and IPv6.</p>
+<p>所以我们一般使用参数<code>AF_INET</code>即可。</p>
+<ul>
+<li><code>type</code></li>
+</ul>
+<p>The type specification for the new socket.</p>
+<p>我们通常只使用其中两个参数<code>SOCK_STREAM</code>和<code>SOCK_DGRAM</code></p>
+<p><code>SOCK_STREAM</code>:A socket type that provides sequenced, reliable, two-way, connection-based byte streams with an OOB data transmission mechanism. This socket type uses the Transmission Control Protocol (TCP) for the Internet address family (AF_INET or AF_INET6).</p>
+<p><code>SOCK_DGRAM</code>:A socket type that supports datagrams, which are connectionless, unreliable buffers of a fixed (typically small) maximum length. This socket type uses the User Datagram Protocol (UDP) for the Internet address family (AF_INET or AF_INET6).</p>
+<p>也就是说，SOCK_STREAM用于TCP，SOCK_DGRAM用于UDP</p>
+<ul>
+<li><code>protocol</code></li>
+</ul>
+<p>The protocol to be used. </p>
+<p>我们通常只使用其中两个参数<code>IPPROTO_TCP</code>和<code>IPPROTO_UDP</code></p>
+<p><code>IPPROTO_TCP</code>:The Transmission Control Protocol (TCP). This is a possible value when the af parameter is AF_INET or AF_INET6 and the type parameter is SOCK_STREAM.</p>
+<p><code>IPPROTO_UDP</code>:The User Datagram Protocol (UDP). This is a possible value when the af parameter is AF_INET or AF_INET6 and the type parameter is SOCK_DGRAM.</p>
+<h4 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h4><p>If no error occurs, socket returns a descriptor referencing the new socket. Otherwise, a value of INVALID_SOCKET is returned, and a specific error code can be retrieved by calling WSAGetLastError.</p>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><pre><code class="cpp">#include &lt;WinSock2.h&gt;
+#include &lt;WS2tcpip.h&gt;
+#include &lt;stdio.h&gt;
+
+// Need to link with Ws2_32.lib
+#pragma comment(lib, &quot;ws2_32.lib&quot;)
+
+
+int main()
+&#123;
+
+    WORD wVersionRequested;
+    WSADATA wsaData;
+    int err;
+
+    wVersionRequested = MAKEWORD(2, 2);
+
+    err = WSAStartup(wVersionRequested, &amp;wsaData);
+    if (err != 0) &#123;
+        printf(&quot;WSAStartup failed with error: %d\n&quot;, err);
+        return 1;
+    &#125;
+
+    if (LOBYTE(wsaData.wVersion) != 2 || HIBYTE(wsaData.wVersion) != 2) &#123;
+        printf(&quot;Could not find a usable version of Winsock.dll\n&quot;);
+        WSACleanup();
+        return 1;
+    &#125;
+    else
+        printf(&quot;The Winsock 2.2 dll was found okay\n&quot;);
+
+    SOCKET servSock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    if (servSock == INVALID_SOCKET) &#123;
+        printf(&quot;socket failed with error: %d\n&quot;, WSAGetLastError());
+        WSACleanup();
+        return 1;
+    &#125;
+    else &#123;
+        printf(&quot;socket function succeeded\n&quot;);
+    &#125;
+
+    // Close the socket to release the resources associated
+    // Normally an application calls shutdown() before closesocket 
+    //   to  disables sends or receives on a socket first
+    // This isn&#39;t needed in this simple sample
+    int iResult=closesocket(servSock);
+
+    if (iResult == SOCKET_ERROR) &#123;
+        printf(&quot;closesocket failed with error: %d\n&quot;, WSAGetLastError());
+        WSACleanup();
+        return 1;
+    &#125;
+
+    WSACleanup();
+&#125;
+</code></pre>
+<hr>
+<h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><h4 id="文档链接-2"><a href="#文档链接-2" class="headerlink" title="文档链接"></a>文档链接</h4><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/api/winsock2/nf-winsock2-bind">https://learn.microsoft.com/zh-cn/windows/win32/api/winsock2/nf-winsock2-bind</a></p>
+<h4 id="头文件-2"><a href="#头文件-2" class="headerlink" title="头文件"></a>头文件</h4><p>winsock2.h</p>
+<h4 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h4><p>绑定函数将本地地址与套接字相关联。</p>
+<h4 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h4><pre><code class="cpp">int WSAAPI bind(
+  SOCKET         s,
+  const sockaddr *name,
+  int            namelen
+);
+</code></pre>
+<h4 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><code>s</code></li>
+</ul>
+<p>标识未绑定套接字的描述符。</p>
+<ul>
+<li><code>name</code></li>
+</ul>
+<p>指向要分配给绑定套接字的本地地址的 sockaddr 结构的指针。</p>
+<ul>
+<li><code>namelen</code></li>
+</ul>
+<p>名称参数指向的值的长度（以字节为单位）。</p>
+<h4 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h4><p>如果未发生错误， bind 将返回零。 否则，它返回SOCKET_ERROR，可以通过调用 WSAGetLastError 来检索特定的错误代码。</p>
+<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h4><pre><code class="cpp">#include &lt;WinSock2.h&gt;
+#include &lt;WS2tcpip.h&gt;
+#include &lt;stdio.h&gt;
+
+// Link with ws2_32.lib
+#pragma comment(lib, &quot;Ws2_32.lib&quot;)
+
+int main()
+&#123;
+
+    // Declare some variables
+    WSADATA wsaData;
+
+    int iResult = 0;            // used to return function results
+
+    // the listening socket to be created
+    SOCKET ListenSocket = INVALID_SOCKET;
+
+    // The socket address to be passed to bind
+    sockaddr_in service;
+
+    //----------------------
+    // Initialize Winsock
+    iResult = WSAStartup(MAKEWORD(2, 2), &amp;wsaData);
+    if (iResult != NO_ERROR) &#123;
+        wprintf(L&quot;Error at WSAStartup()\n&quot;);
+        return 1;
+    &#125;
+    //----------------------
+    // Create a SOCKET for listening for 
+    // incoming connection requests
+    ListenSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    if (ListenSocket == INVALID_SOCKET) &#123;
+        wprintf(L&quot;socket function failed with error: %u\n&quot;, WSAGetLastError());
+        WSACleanup();
+        return 1;
+    &#125;
+    //----------------------
+    // The sockaddr_in structure specifies the address family,
+    // IP address, and port for the socket that is being bound.
+    service.sin_family = AF_INET;
+    service.sin_addr.s_addr = inet_addr(&quot;127.0.0.1&quot;);
+    service.sin_port = htons(27015);
+
+    //----------------------
+    // Bind the socket.
+    iResult = bind(ListenSocket, (SOCKADDR *) &amp;service, sizeof (service));
+    if (iResult == SOCKET_ERROR) &#123;
+        wprintf(L&quot;bind failed with error %u\n&quot;, WSAGetLastError());
+        closesocket(ListenSocket);
+        WSACleanup();
+        return 1;
+    &#125;
+    else
+        wprintf(L&quot;bind returned success\n&quot;);
+
+    WSACleanup();
+    return 0;
+&#125;
+</code></pre>
+<hr>
+
+    </div>
+    
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 20xx - 2023 Yhs_JokerのBlog
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Yhs_Joker
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>

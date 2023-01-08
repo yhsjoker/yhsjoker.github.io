@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>AtCoder Beginner Contest 284 | Yhs_JokerのBlog</title>
+        <meta name="author" content="Yhs_Joker">
+        <meta name="description" content="There is only one kind of heroism in the world, which is to love life after knowing the truth of life.">
+        <meta name="keywords" content="">
+        <link rel="icon" href="./head_portrait.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Yhs_JokerのBlog</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Yhs_JokerのBlog</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>AtCoder Beginner Contest 284 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2023/1/8
+        </span>
+        
+        <span class="category">
+            <a href="/categories/题解/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                题解
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/AtCoder/" style="color: #00a596">
+                    AtCoder
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/ABC/" style="color: #00a596">
+                    ABC
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <p>A-E题解，剩余题目待我学成归来</p>
+<span id="more"></span>
+
+<h3 id="原题链接：戳这里"><a href="#原题链接：戳这里" class="headerlink" title="原题链接：戳这里"></a>原题链接：<a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc284">戳这里</a></h3><hr>
+<h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>读入N个字符串，然后倒序输出</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>使用vector，stack等容器实现</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include&lt;vector&gt;
+using namespace std;
+
+vector&lt;string&gt; v;
+
+int main()
+&#123;
+    int n;
+    cin&gt;&gt;n;
+    while(n--)
+    &#123;
+        string s;
+        cin&gt;&gt;s;
+        v.push_back(s);
+    &#125;
+    for(auto it=v.rbegin();it!=v.rend();it++)
+        cout&lt;&lt;*it&lt;&lt;endl;
+&#125;
+</code></pre>
+<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><h3 id="题目大意-1"><a href="#题目大意-1" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定T组数据，对于每组数据，有N个整数，求出这N个整数中奇数的个数</p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>奇数即%2余1的数</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;iostream&gt;
+using namespace std;
+
+void solve()
+&#123;
+    int n,ans=0;
+    cin&gt;&gt;n;
+    while(n--)
+    &#123;
+        int x;
+        cin&gt;&gt;x;
+        if(x&amp;1)
+            ans++;
+    &#125;
+    cout&lt;&lt;ans&lt;&lt;endl;
+&#125;
+
+int main()
+&#123;
+    int t;
+    cin&gt;&gt;t;
+    while(t--)
+        solve();
+&#125;
+</code></pre>
+<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><h3 id="题目大意-2"><a href="#题目大意-2" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定N个点和M条边，求有多少个连通块</p>
+<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>用并查集来维护，初始有N个连通块，每当有两个不在一个集合内的点连一条边时，连通块的个数减一</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;iostream&gt;
+
+using namespace std;
+
+int p[105];
+int find(int x)
+&#123;
+    if(p[x]!=x) p[x]=find(p[x]);
+    return p[x];
+&#125;
+
+int main()
+&#123;
+    int n,m;
+    cin&gt;&gt;n&gt;&gt;m;
+    int ans=n;
+    for(int i=1;i&lt;=n;i++) p[i]=i;
+    while(m--)
+    &#123;
+        int a,b;
+        cin&gt;&gt;a&gt;&gt;b;
+        int pa=find(a),pb=find(b);
+        if(pa!=pb)
+            p[pa]=pb,ans--;
+    &#125;
+    cout&lt;&lt;ans;
+&#125;
+</code></pre>
+<h2 id="D"><a href="#D" class="headerlink" title="D"></a>D</h2><h3 id="题目大意-3"><a href="#题目大意-3" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定T组数据，对于每组数据，有一个整数N，N可以被分解成p^2*q的形式，其中p和q都是质数，求p和q</p>
+<h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p>N的范围到达10^18次方，因此最差时间复杂度也基本是三次根号下N。考虑到N的形式，我们只需找到一个N的因子t，即可得到p和q，因为若t是p，则q是N&#x2F;(t*t);若t是q，则p是sqrt(N&#x2F;t)。那么问题就转移为了如何求出N的最小因子。考虑当N的最小因子最大时，也不过10^6级别，因为N&#x3D;p^2*q,若N的最小因子大于10^6，则N大于10^18。所以只需要从2开始枚举，找到第一个因子即可，时间复杂度为O(三次根号下N)。</p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;iostream&gt;
+#include&lt;cmath&gt;
+using namespace std;
+using ll=long long;
+void solve()
+&#123;
+    ll n;
+    ll p,q;
+    cin&gt;&gt;n;
+    for(ll i=2;;i++)
+    &#123;
+        if(n%i==0)
+        &#123;
+            ll t=n/i;
+            if(t%i==0)  //如果n是i*i的倍数，则i就是p
+            &#123;
+                p=i;
+                q=t/i;
+            &#125;
+            else
+            &#123;
+                q=i;
+                p=sqrt(t);  //由于有精度问题，所以要找到正确的，或者此处可以写成round(sqrt(t));
+                if(p*p&lt;t) p++;
+                if(p*p&gt;t) p--;
+            &#125;
+            break;
+        &#125;
+    &#125;
+    cout&lt;&lt;p&lt;&lt;&#39; &#39;&lt;&lt;q&lt;&lt;endl;
+&#125;
+
+int main()
+&#123;
+    int t;
+    cin&gt;&gt;t;
+    while(t--)
+        solve();
+&#125;
+</code></pre>
+<h2 id="E"><a href="#E" class="headerlink" title="E"></a>E</h2><h3 id="题目大意-4"><a href="#题目大意-4" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定N个点和M条边，定义从1出发的路径数量为K，求min(K,10^6)。其中路径上不能有重复的点。</p>
+<h3 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h3><p>图的dfs，通过手动模拟即可很容易了解</p>
+<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using  namespace std;
+
+const int N=200010,M=N*2;
+
+int h[N],e[M],ne[M],idx;
+bool st[N];
+
+int n,m;
+int ans;
+
+void add(int a,int b)
+&#123;
+    e[idx]=b;
+    ne[idx]=h[a];
+    h[a]=idx++;
+&#125;
+
+void dfs(int x)
+&#123;
+    if(ans&gt;=1000000) return;
+    if(st[x]) return;   //当该点在路径当中时就不能使用
+    st[x]=1;
+    ans++;
+    for(int i=h[x];i!=-1;i=ne[i])
+    &#123;
+        int j=e[i];
+        dfs(j);
+    &#125;
+    st[x]=0;    //回溯，该点结束后可能有其他路线再次经过该点
+&#125;
+
+int main()
+&#123;
+    memset(h,-1,sizeof h);
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=0;i&lt;m;i++)
+    &#123;
+        int a,b;
+        cin&gt;&gt;a&gt;&gt;b;
+        add(a,b);
+        add(b,a);
+    &#125;
+    
+    dfs(1);
+    
+    cout&lt;&lt;ans;
+&#125;
+</code></pre>
+
+    </div>
+    
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 20xx - 2023 Yhs_JokerのBlog
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Yhs_Joker
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>
